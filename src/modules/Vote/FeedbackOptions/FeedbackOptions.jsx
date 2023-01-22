@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Button from "../../../shared/components/Button/Button";
 
-const VoteVariants = ({ leaveVote }) => {
+const FeedbackOptions = ({ leaveVote }) => {
         return (
             <>
                 <Button onClick={() => leaveVote("good")} type="button">Good</Button>
@@ -11,9 +11,9 @@ const VoteVariants = ({ leaveVote }) => {
             </>
         )
     }
-export default VoteVariants;
+export default FeedbackOptions;
 
-VoteVariants.propTypes = {
+FeedbackOptions.propTypes = {
     leaveVote: PropTypes.func.isRequired,
     
 }

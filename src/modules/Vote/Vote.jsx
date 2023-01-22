@@ -1,8 +1,9 @@
 import { Component } from "react";
 
-import VoteVariants from "./VoteVariants/VoteVariants";
-import VoteResults from "./VoteResults/VoteResults";
-import VoteBlock from "./VoteBlock/VoteBlock";
+import VoteVariants from "./FeedbackOptions/FeedbackOptions";
+import VoteResults from "./Statistics/Statistics";
+import VoteBlock from "./Section/Section";
+import Notification from "./Notification/Notification";
 
 import styles from "./vote.module.scss";
 
@@ -53,9 +54,14 @@ class Vote extends Component {
                     <VoteBlock >
                         <VoteVariants leaveVote={this.leaveVote} />
                     </VoteBlock>
+                    {this.calcTotal() !== 0 && (
                     <VoteBlock title="Statistics">
                         <VoteResults  total={total} good={good} neutral={neutral} bad={bad} goodPercent={goodPercent} />
-                    </VoteBlock>
+                    </VoteBlock>)}
+                    {this.calcTotal() === 0 && (
+                        <VoteBlock >
+                    <Notification message="There is no feedback" />
+                    </VoteBlock>)}
     
                 </div>
             </div>

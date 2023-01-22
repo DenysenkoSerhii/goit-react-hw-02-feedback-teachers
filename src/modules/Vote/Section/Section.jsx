@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-import styles from "./vote-block.module.scss";
+import styles from "./section.module.scss";
 
-const VoteBlock = ({ children, title }) => {
+const Section = ({ children, title }) => {
     return (
         <div className={styles.block}>
             <h4 className={styles.blockTitle}>{title}</h4>
@@ -10,9 +10,9 @@ const VoteBlock = ({ children, title }) => {
         </div>)
 }
 
-export default VoteBlock;
+export default Section;
 
-VoteBlock.prototypes = {
+Section.prototypes = {
     title: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired,
 }

@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
 
-const VoteResults = ({ total, good, neutral, bad, goodPercent }) => {
+const Statistics = ({ total, good, neutral, bad, goodPercent }) => {
     return (
         <>
             <p>Total: {total}</p>
             <p>Good: {good}</p>
             <p>Neutral: {neutral} </p>
             <p>Bad: {bad} </p>
-            <p>Positive feedback: {goodPercent}</p>
+            <p>Positive feedback: {goodPercent}%</p>
         </>
     )
 }
 
-export default VoteResults;
+export default Statistics;
 
-VoteResults.propTypes = {
+Statistics.propTypes = {
     total: PropTypes.number.isRequired,
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
