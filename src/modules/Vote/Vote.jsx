@@ -1,12 +1,13 @@
 import { Component } from "react";
 
-import VoteVariants from "./FeedbackOptions/FeedbackOptions";
-import VoteResults from "./Statistics/Statistics";
-import VoteBlock from "./Section/Section";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
+import Statistics from "./Statistics/Statistics";
+import Section from "./Section/Section";
 import Notification from "./Notification/Notification";
 
 import styles from "./vote.module.scss";
 
+const FeedbackOption = ["good", "neutral", "bad"];
 
 class Vote extends Component {
     state = {
@@ -15,9 +16,9 @@ class Vote extends Component {
         bad: 0,
     }
 
-     leaveVote = (name) => {
+    onLeaveFeedback = (name) => {
         this.setState(prevState => {
-            console.log(prevState);
+            // console.log(prevState);
             return {
                 [name]: prevState[name] + 1
             }
@@ -50,20 +51,22 @@ class Vote extends Component {
         return (
             <div>
                 <h3 className={styles.title}>Please leave the feedback</h3>
-                <div className={styles.wrapper}>
-                    <VoteBlock >
-                        <VoteVariants leaveVote={this.leaveVote} />
-                    </VoteBlock>
+                    <Section >
+                    <div className={styles.wrap}>
+                        <FeedbackOptions options={FeedbackOption} onLeaveFeedback={this.onLeaveFeedback} />
+                        </div>
+                    </Section>
+                    <h3 className={styles.title}>Statistics</h3>
                     {this.calcTotal() !== 0 && (
-                    <VoteBlock title="Statistics">
-                        <VoteResults  total={total} good={good} neutral={neutral} bad={bad} goodPercent={goodPercent} />
-                    </VoteBlock>)}
+                    <Section >
+                        <Statistics  total={total} good={good} neutral={neutral} bad={bad} goodPercent={goodPercent} />
+                    </Section>)}
                     {this.calcTotal() === 0 && (
-                        <VoteBlock >
+                        <Section >
                     <Notification message="There is no feedback" />
-                    </VoteBlock>)}
+                    </Section>)}
     
-                </div>
+                
             </div>
         )
     }
